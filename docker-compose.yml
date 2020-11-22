@@ -19,6 +19,10 @@ services:
         - nginx-vhost:/etc/nginx/vhost.d
         - html:/usr/share/nginx/html
         - certs:/etc/nginx/certs:ro
+      logging:
+        driver: json-file
+        options:
+          max-size: "10m"
 
     letsencrypt-nginx-proxy-companion:
         container_name: webproxy-letsencrypt-companion
@@ -32,6 +36,10 @@ services:
           - certs:/etc/nginx/certs:rw
         depends_on: # Make sure we start nginx proxy container first
             - nginx-proxy
+        logging:
+          driver: json-file
+          options:
+            max-size: "10m"
 
 networks:
     nginx-proxy: # Name of our shared network that containers will use
