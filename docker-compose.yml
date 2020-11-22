@@ -5,8 +5,10 @@ services:
       image: jwilder/nginx-proxy:alpine
       restart: "always" # Always restart container
       ports:
-        - "8080:80" # Port mappings in format host:container
-        - "9443:443"
+        # - "5080:80" # Port mappings in format host:container
+        # - "5443:443"
+        - "80:80" # Port mappings in format host:container
+        - "443:443"
       networks:
         - nginx-proxy # Name of the etwork these two containers will share
       labels:
