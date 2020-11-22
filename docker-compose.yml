@@ -18,6 +18,7 @@ services:
         - nginx-conf:/etc/nginx/conf.d
         - nginx-vhost:/etc/nginx/vhost.d
         - html:/usr/share/nginx/html
+        - nginx-dhparams:/etc/nginx/dhparam
         - certs:/etc/nginx/certs:ro
       logging:
         driver: json-file
@@ -47,5 +48,6 @@ networks:
 volumes: # Names of volumes that out containers will share. Those will persist on docker's host machine.
     nginx-conf:
     nginx-vhost:
+    nginx-dhparams:
     html:
     certs:
